@@ -1,10 +1,5 @@
 /* ========== Catalog ========== */ 
 
-//Home > Cataloging > Edit TITLE > items (cataloguing/additem.pl?biblionumber=n) 
-  //Limit the number of copies that can be added to a biblio using the "Add multiple copies of this item" button 
-    $('#cat_additem #number_of_copies').attr('type','number').attr('max','10').attr('size', '5'); 
-    $('#add_multiple_copies_span div.hint').html('<p>Maximum currently set to 10. The barcode you enter will be incremented for each additional item.<br />If you need to add more than 10 at a time, please contact nexthelp@nekls.org</p>'); 
-
 //Home > Catalog > Item search (catalogue/itemsearch.pl) 
   //Hide no-longer-used shelving locations from item search page 
     $('#catalog_itemsearch #location option[value="ADULT"], #catalog_itemsearch #location option[value^="BALD"], #catalog_itemsearch #location option[value="CHILDRENS"], #catalog_itemsearch #location option[value^="LVPL"], #catalog_itemsearch #location option[value^="PAOLA"]').remove(); 
@@ -135,5 +130,27 @@
     $('#circ_request a').each(function() { 
       this.href = this.href.replace('members/moremember.pl', 'circ/circulation.pl'); 
     }); 
+
+//Home > Catalog > {TITLE} > Place a hold 
+  //BEGIN changes default item sort order to Home library 
+    $('#requestspecific').on('init.dt', function() { 
+      $(this).dataTable().fnSort([$(this).find('tr[role=row] th:contains("Home library")').index('th'), 'asc']); 
+    }); 
+
+//Home > Catalog > Search for '[-SEARCH TERM-]' with limit(s): '(homebranch: "DIGITAL")' 
+  //Change location column text for digital items
+    $('#bookbag_form > table > tbody > tr td .availability:contains("Digital Content")').addClass('digitalavailable'); 
+    $('.digitalavailable .results_unavailable').each(function() { 
+      var text = $(this).text(); 
+      $(this).text(text.replace('1 unavailable', 'Digital content')); 
+    }); 
+    $('.digitalavailable .results_available_count').each(function() { 
+      var text = $(this).text(); 
+      $(this).text(text.replace('1 item, None available', 'Digital content')); 
+    }); 
+
+//Home > Catalog > Search for 'merge' (catalogue/search.pl)
+  //Hide merge option on "Edit" drop-down button 
+    $('#catalog_results #selection_ops a.results_batch_op[data-op="merge"]').hide(); 
 
 /* ========== Catalog - End ========== */ 
