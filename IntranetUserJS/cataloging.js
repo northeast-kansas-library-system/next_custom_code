@@ -79,7 +79,7 @@
       $('#cat_additem span:contains("Lost status")').parent().parent().parent().addClass('next_embigen-2 iastatus'); 
       $('#cat_additem span:contains("Materials specified")').parent().parent().parent().addClass('next_embigen-2 ianotes'); 
       $('#cat_additem span:contains("Damaged status")').parent().parent().parent().addClass('next_embigen-2 iastatus'); 
-      $('#cat_additem span:contains("Not for loan")').parent().parent().parent().addClass('emnext_embigen-2b iastatus'); 
+      $('#cat_additem span:contains("Not for loan")').parent().parent().parent().addClass('next_embigen-2 iastatus'); 
       $('#cat_additem span:contains("Collection")').parent().parent().parent().addClass('next_embigen-2 iaclass'); 
       $('#cat_additem span:contains("Home library")').parent().parent().parent().addClass('next_embigen-2 iaclass'); 
       $('#cat_additem span:contains("Current")').parent().parent().parent().addClass('next_embigen-2 iaclass'); 

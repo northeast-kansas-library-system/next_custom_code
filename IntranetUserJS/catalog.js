@@ -103,11 +103,11 @@
 
 //Home > Catalog > {TITLE} > Details
   //Style lost, NFL, and withdrawn statuses 
-    $('.lost, .notforloan, .wdn').prepend('<i class="fa fa-ban"></i>&nbsp;').append('&nbsp;<i class="fa fa-ban"></i>').wrapInner('<span class="next_label next_red next_embigen-2" style="padding: 5px;"></span>').append('<br /><br />'); 
+    $('#catalog_detail .lost, #catalog_detail .notforloan, #catalog_detail .wdn').prepend('<i class="fa fa-ban"></i>&nbsp;').append('&nbsp;<i class="fa fa-ban"></i>').wrapInner('<span class="next_label next_red next_embigen-2" style="padding: 5px;"></span>').append('<br /><br />'); 
  
 //Home > Catalog > {TITLE} > Details
   //Style damaged statuses 
-    $('.dmg').prepend('<i class="fa fa-exclamation-triangle"></i>&nbsp;').append('&nbsp;<i class="fa fa-exclamation-triangle"></i>').wrapInner('<span class="next_label next_dark next_embigen-2" style="padding: 5px"></span>').append('<br /><br />');
+    $('#catalog_detail .dmg').prepend('<i class="fa fa-exclamation-triangle"></i>&nbsp;').append('&nbsp;<i class="fa fa-exclamation-triangle"></i>').wrapInner('<span class="next_label next_dark next_embigen-2" style="padding: 5px"></span>').append('<br /><br />');
 
 //Home > Catalog > {TITLE} > Item details 
   //BEGIN Hide lost value 2 (Lost (more than 45 days overdue)) from dropdown on item details screen 

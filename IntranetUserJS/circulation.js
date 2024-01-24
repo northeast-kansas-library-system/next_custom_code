@@ -130,6 +130,35 @@
         }); 
       } 
 
+//Home > Circulation > * (circ/*)
+  //BEGIN Remove Transfer, Set library, Fast cataloging, and Offline circulation links from left column and circulation sidebar 
+    $('.circ-button[href="/cgi-bin/koha/circ/branchtransfers.pl"]').hide(); 
+    $('.circ-button[href="/cgi-bin/koha/circ/set-library.pl"]').hide(); 
+    $('.circ-button[href="/cgi-bin/koha/cataloguing/addbiblio.pl?frameworkcode=FA"]').hide(); 
+    $('.circ-button[href="/cgi-bin/koha/circ/checkout-notes.pl"]').hide(); 
+    $('.circ-button[href="/cgi-bin/koha/circ/pendingreserves.pl"]').hide(); 
+    $('#offline-circulation ').hide(); 
+    $('#navmenu #navmenulist h5:contains("Circulation")').parent().addClass('circsidebar'); 
+    $('.circsidebar li:contains("Set library"), .circsidebar li:contains("Fast cataloging"), .circsidebar li:contains("Checkout notes"), .circsidebar li:contains("Holds to pull"), .circsidebar a[href="/cgi-bin/koha/circ/branchtransfers.pl"]').hide();
+
+//Home > Circulation > Check in 
+  //BEGIN redirect patron data to check-out instead of details 
+    $("#circ_returns .ci-patron a").each(function() { 
+      this.href = this.href.replace('members/moremember.pl', 'circ/circulation.pl'); 
+    }); 
+
+//Home > Circulation > Check in 
+  //Add patron name to "Hold found" modal
+    if ($('#hold-found2').length) {
+      var hold_found2_borrower_number = $("#hold-found2 input[name=borrowernumber]").val();
+      var hold_found2_borrower_api = '/api/v1/patrons/' + hold_found2_borrower_number;
+      $.getJSON(hold_found2_borrower_api, function(hold_found2_borrower) {
+        var hold_found2_borrower_name = '';
+        hold_found2_borrower_name += hold_found2_borrower.surname + ', ' + hold_found2_borrower.firstname + ' - ';
+        $('#hold-found2 li span[class=patron-category]').parent().prepend(hold_found2_borrower_name);
+      });
+    }
+
 /* ========== Circulation - End ========== */ 
 
 /* ========== Contact sheet for circulation page ========== */ 

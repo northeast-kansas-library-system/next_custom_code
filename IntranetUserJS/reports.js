@@ -1,7 +1,7 @@
 /* ========== Reports ========== */ 
 
 //Home > Reports › Guided reports wizard › Saved reports › -REPORTNAME- Report 
-  //BEGIN renders notes on reports in HTML 
+  //Renders notes on reports in HTML 
   //Requires IntranetUserJS "toHtml" function 
     $('#table_reports tr td:nth-child(7), .col-sm-10 > main:nth-child(1) > form:nth-child(4) > p:nth-child(4), .page-section > p:nth-child(1)').each(function() { 
       $(this).toHtml(); 

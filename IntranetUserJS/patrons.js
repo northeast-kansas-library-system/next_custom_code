@@ -119,4 +119,48 @@
   //Rename "Payment type" 
     $("#pat_paycollect label[for='payment_type']").html("Payment type<br />(optional):"); 
 
+//Home > Patrons > Add patron ([borrowercategory]) (members/memberentry.pl?op=add&categorycode=)
+  //Force Item due and Advance notice to auto-select "Digests only" when selected
+    if (url.indexOf('memberentry.pl') != -1) {  
+      //creates variables for digestable checkboxes
+        var email1_var = document.getElementById('email1');
+        var sms1_var = document.getElementById('sms1');
+        var email2_var = document.getElementById('email2');
+        var sms2_var = document.getElementById('sms2');
+        var email4_var = document.getElementById('email4');
+        var sms4_var = document.getElementById('sms4');
+      //If email or SMS checkbox is checked, corresponding digest is checked
+        $('#email1, #sms1').change(function() {
+          if( (email1_var.checked == true) || (sms1_var.checked == true) ) {
+            $('#digest1').prop('checked', 'true').delay('2000');
+          }
+        });
+        $('#email2, #sms2').change(function() {
+          if( (email2_var.checked == true) || (sms2_var.checked == true) ) {
+            $('#digest2').prop('checked', 'true').delay('2000');
+          }
+        });
+        $('#email4, #sms4').change(function() {
+          if( (email4_var.checked == true) || (sms4_var.checked == true) ) {
+            $('#digest4').prop('checked', 'true').delay('2000');
+          }
+        });
+      //Disable un-checking Digest checkbox if email or SMS is still checked
+        $('#digest1').change(function() {
+          if( (email1_var.checked == true) || (sms1_var.checked == true) ) {
+            $('#digest1').prop('checked', 'true').delay('2000');
+          }
+        });
+        $('#digest2').change(function() {
+          if( (email2_var.checked == true) || (sms2_var.checked == true) ) {
+            $('#digest2').prop('checked', 'true').delay('2000');
+          }
+        });
+        $('#digest4').change(function() {
+          if( (email4_var.checked == true) || (sms4_var.checked == true) ) {
+            $('#digest4').prop('checked', 'true').delay('2000');
+          }
+      });
+    } 
+
 /* ========== Patrons - End ========== */ 
